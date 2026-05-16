@@ -1,0 +1,76 @@
+{
+    "name": "gboquizosanchez/filament-scroll-to-top",
+    "description": "Auto scroll to top on page change for Filament panels",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "php",
+        "laravel",
+        "filament",
+        "plugin",
+        "scroll",
+        "pagination",
+        "ux"
+    ],
+    "homepage": "https://github.com/gboquizosanchez",
+    "authors": [
+        {
+            "name": "Germán Boquizo Sánchez",
+            "email": "germanboquizosanchez@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^4.0 || ^5.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^9.0 || ^10.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-type-coverage": "^3.0",
+        "phpstan/phpstan": "^2.0",
+        "rector/rector": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Boquizo\\FilamentScrollToTop\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "refactor": "rector",
+        "lint": "pint",
+        "test:refactor": "rector --dry-run",
+        "test:lint": "pint --test",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest --colors=always",
+        "test": [
+            "@test:refactor",
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Boquizo\\FilamentScrollToTop\\ScrollToTopServiceProvider"
+            ]
+        }
+    }
+}
